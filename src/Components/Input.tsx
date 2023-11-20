@@ -4,14 +4,14 @@ type Props = {
   value: string,
   name?: string,
   dataTestId?: string,
-  id: string,
+  id?: string,
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
   required?: boolean,
 };
 
 function Input({ type,
   name = '', dataTestId = '',
-  id, labelText = '', onChange = () => {}, value, required = false }: Props) {
+  id = '', labelText = '', onChange = () => {}, value, required = false }: Props) {
   return (
     <>
       <label className="label" htmlFor={ id }>

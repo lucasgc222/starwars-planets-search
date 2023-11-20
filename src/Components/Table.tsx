@@ -3,7 +3,7 @@ import planetsContext from '../context/PlanetsContext';
 import { PlanetType } from '../utils/type';
 
 function Table() {
-  const { planets } = useContext(planetsContext);
+  const { getPlanetsByName } = useContext(planetsContext);
 
   return (
     <div>
@@ -26,7 +26,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {planets.map((planet: PlanetType) => (
+          {getPlanetsByName().map((planet: PlanetType) => (
             <tr key={ planet.name }>
               <td>{planet.name}</td>
               <td>{planet.rotation_period}</td>
