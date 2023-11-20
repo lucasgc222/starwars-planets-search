@@ -1,9 +1,28 @@
 import { useContext } from 'react';
 import planetsContext from '../context/PlanetsContext';
-import { PlanetType } from '../utils/type';
+import { FiltersType, PlanetType } from '../utils/type';
 
 function Table() {
-  const { getPlanetsByName } = useContext(planetsContext);
+  const { getPlanetsByName, filters } = useContext(planetsContext);
+
+  const applyFilters = () => {
+    const resultData = getPlanetsByName();
+    return resultData.filter((planet:PlanetType) => (
+      filters.every(({ column, comparison, valueFilter }: FiltersType) => {
+        // if (planet[column] === 'unknown') return false;
+        switch (comparison) {
+          case 'maior que':
+            return parseInt(planet[column], 10) > parseInt(valueFilter, 10);
+          case 'menor que':
+            return parseInt(planet[column], 10) < parseInt(valueFilter, 10);
+          case 'igual a':
+            return parseInt(planet[column], 10) === parseInt(valueFilter, 10);
+          default:
+            return false;
+        }
+      })
+    ));
+  };
 
   return (
     <div>
@@ -26,7 +45,7 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {getPlanetsByName().map((planet: PlanetType) => (
+          {applyFilters().map((planet: PlanetType) => (
             <tr key={ planet.name }>
               <td>{planet.name}</td>
               <td>{planet.rotation_period}</td>

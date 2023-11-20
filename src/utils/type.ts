@@ -14,3 +14,15 @@ export type PlanetType = {
   edited: string,
   url: string,
 };
+
+export type AllowedType = 'population'
+| 'orbital_period'
+| 'diameter'
+| 'rotation_period'
+| 'surface_water';
+
+export type FiltersType = {
+  column: AllowedType,
+  comparison: string,
+  valueFilter: string,
+};

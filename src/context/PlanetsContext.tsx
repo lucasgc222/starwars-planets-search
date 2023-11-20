@@ -1,10 +1,13 @@
 import { createContext } from 'react';
-import { PlanetType } from '../utils/type';
+import { FiltersType, PlanetType } from '../utils/type';
 
 type PlanetsContextType = {
   planets: PlanetType[],
   isLoading: boolean,
   search: string,
+  filters: FiltersType[],
+  allowedColumns: string[],
+  addFilter: (filter: FiltersType) => void,
   searchPlanet: (searchInfo: string) => void,
   getPlanetsByName: () => PlanetType[],
 };
