@@ -13,7 +13,7 @@ function DisplayFilters() {
             {`${filter.column} | ${filter.comparison} | ${filter.valueFilter} | `}
             <Button
               buttonText="X"
-              dataTestId="button-filter"
+              dataTestId="filter"
               onClick={ () => removeFilter(filter.column) }
             />
           </p>
