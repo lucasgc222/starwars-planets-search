@@ -6,7 +6,7 @@ import Button from './Button';
 import { AllowedType } from '../utils/type';
 
 function FilterColumns() {
-  const { allowedColumns, addFilter } = useContext(planetsContext);
+  const { allowedColumns, addFilter, removeAllFilters } = useContext(planetsContext);
   const [formFilters, setFormFilters] = useState(INITIAL_FILTER_VALUE);
 
   useEffect(() => {
@@ -78,6 +78,11 @@ function FilterColumns() {
           disabled={ !allowedColumns.length }
         />
       </form>
+      <Button
+        buttonText="Remover todas filtragens"
+        dataTestId="button-remove-filters"
+        onClick={ () => removeAllFilters() }
+      />
     </div>
   );
 }

@@ -33,6 +33,19 @@ function PlanetsProvider({ children }: UserProviderProps) {
     setAllowedColumns(newAllowedColumns);
   };
 
+  const removeFilter = (filterName: string) => {
+    const newFilters = filters.filter((filter) => filter.column !== filterName);
+    setFilters(newFilters);
+
+    const columns = [...allowedColumns, filterName];
+    setAllowedColumns(COLUMNS.filter((column) => columns.includes(column)));
+  };
+
+  const removeAllFilters = () => {
+    setFilters([]);
+    setAllowedColumns(COLUMNS);
+  };
+
   const globalValues = {
     planets,
     isLoading,
@@ -40,6 +53,8 @@ function PlanetsProvider({ children }: UserProviderProps) {
     filters,
     allowedColumns,
     addFilter,
+    removeFilter,
+    removeAllFilters,
     searchPlanet,
     getPlanetsByName,
   };

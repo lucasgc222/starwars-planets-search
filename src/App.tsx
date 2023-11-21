@@ -3,6 +3,7 @@ import InputSearchPlanets from './Components/InputSearchPlanets';
 import Table from './Components/Table';
 import planetsContext from './context/PlanetsContext';
 import FilterColumns from './Components/FilterColumns';
+import DisplayFilters from './Components/DisplayFilters';
 
 function App() {
   const { isLoading } = useContext(planetsContext);
@@ -15,6 +16,7 @@ function App() {
         <>
           <InputSearchPlanets />
           <FilterColumns />
+          <DisplayFilters />
           <Table />
         </>
       )}

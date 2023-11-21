@@ -8,6 +8,8 @@ type PlanetsContextType = {
   filters: FiltersType[],
   allowedColumns: string[],
   addFilter: (filter: FiltersType) => void,
+  removeFilter: (filterName: string) => void,
+  removeAllFilters: () => void,
   searchPlanet: (searchInfo: string) => void,
   getPlanetsByName: () => PlanetType[],
 };
