@@ -9,11 +9,10 @@ function DisplayFilters() {
     <div>
       {filters.length > 0 ? (
         filters.map((filter) => (
-          <p key={ filter.column }>
+          <p key={ filter.column } data-testid="filter">
             {`${filter.column} | ${filter.comparison} | ${filter.valueFilter} | `}
             <Button
               buttonText="X"
-              dataTestId="filter"
               onClick={ () => removeFilter(filter.column) }
             />
           </p>
