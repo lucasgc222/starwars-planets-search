@@ -3,11 +3,25 @@ import planetsContext from '../context/PlanetsContext';
 import { FiltersType, PlanetType } from '../utils/type';
 
 function Table() {
-  const { getPlanetsByName, filters } = useContext(planetsContext);
+  const { getPlanetsByName, filters, order } = useContext(planetsContext);
+
+  const applyOrdering = (listToOrdering: PlanetType[]) => {
+    const unknownPlanets = listToOrdering
+      .filter((planet) => planet[order.column] === 'unknown');
+
+    const planets = listToOrdering.filter((planet) => planet[order.column] !== 'unknown');
+
+    const orderedPlanets = order.sort === 'ASC' ? planets
+      .sort((a, b) => parseInt(a[order.column], 10) - parseInt(b[order.column], 10))
+      : planets
+        .sort((a, b) => parseInt(b[order.column], 10) - parseInt(a[order.column], 10));
+
+    return [...orderedPlanets, ...unknownPlanets] as PlanetType[];
+  };
 
   const applyFilters = () => {
     const resultData = getPlanetsByName();
-    return resultData.filter((planet:PlanetType) => (
+    const filteredData = resultData.filter((planet:PlanetType) => (
       filters.every(({ column, comparison, valueFilter }: FiltersType) => {
         // if (planet[column] === 'unknown') return false;
         switch (comparison) {
@@ -22,6 +36,7 @@ function Table() {
         }
       })
     ));
+    return order.sort !== '' ? applyOrdering(filteredData) : filteredData;
   };
 
   return (
@@ -47,7 +62,7 @@ function Table() {
         <tbody>
           {applyFilters().map((planet: PlanetType) => (
             <tr key={ planet.name }>
-              <td>{planet.name}</td>
+              <td data-testid="planet-name">{planet.name}</td>
               <td>{planet.rotation_period}</td>
               <td>{planet.orbital_period}</td>
               <td>{planet.diameter}</td>

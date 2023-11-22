@@ -2,8 +2,8 @@ import { useState } from 'react';
 import useFetch from '../hooks/useFetch';
 import { fetchPlanets } from '../services/api';
 import planetsContext from './PlanetsContext';
-import { FiltersType, PlanetType } from '../utils/type';
-import { COLUMNS } from '../utils/Constants';
+import { FiltersType, PlanetType, SortType } from '../utils/type';
+import { COLUMNS, INITIAL_ORDER } from '../utils/Constants';
 
 type UserProviderProps = {
   children: React.ReactNode;
@@ -14,6 +14,7 @@ function PlanetsProvider({ children }: UserProviderProps) {
   const [search, setSearch] = useState<string>('');
   const [allowedColumns, setAllowedColumns] = useState<string[]>(COLUMNS);
   const [filters, setFilters] = useState<FiltersType[]>([]);
+  const [order, setOrder] = useState(INITIAL_ORDER);
 
   const searchPlanet = (searchInfo: string) => {
     setSearch(searchInfo);
@@ -44,6 +45,11 @@ function PlanetsProvider({ children }: UserProviderProps) {
   const removeAllFilters = () => {
     setFilters([]);
     setAllowedColumns(COLUMNS);
+    setOrder(INITIAL_ORDER);
+  };
+
+  const addOrder = (newOrder: SortType) => {
+    setOrder(newOrder);
   };
 
   const globalValues = {
@@ -52,9 +58,11 @@ function PlanetsProvider({ children }: UserProviderProps) {
     search,
     filters,
     allowedColumns,
+    order,
     addFilter,
     removeFilter,
     removeAllFilters,
+    addOrder,
     searchPlanet,
     getPlanetsByName,
   };

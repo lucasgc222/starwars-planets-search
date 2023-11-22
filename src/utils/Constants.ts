@@ -1,4 +1,4 @@
-import { FiltersType } from './type';
+import { FiltersType, SortType } from './type';
 
 export const COLUMNS = [
   'population',
@@ -18,4 +18,9 @@ export const INITIAL_FILTER_VALUE: FiltersType = {
   column: 'population',
   comparison: 'maior que',
   valueFilter: '0',
+};
+
+export const INITIAL_ORDER: SortType = {
+  column: 'population',
+  sort: '',
 };

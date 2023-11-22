@@ -26,3 +26,8 @@ export type FiltersType = {
   comparison: string,
   valueFilter: string,
 };
+
+export type SortType = {
+  column: AllowedType,
+  sort: 'ASC' | 'DESC' | '',
+};

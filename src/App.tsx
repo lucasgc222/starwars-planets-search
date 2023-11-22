@@ -4,6 +4,7 @@ import Table from './Components/Table';
 import planetsContext from './context/PlanetsContext';
 import FilterColumns from './Components/FilterColumns';
 import DisplayFilters from './Components/DisplayFilters';
+import FilterSortColumns from './Components/FilterSortColumns';
 
 function App() {
   const { isLoading } = useContext(planetsContext);
@@ -15,7 +16,10 @@ function App() {
       ) : (
         <>
           <InputSearchPlanets />
-          <FilterColumns />
+          <div style={ { display: 'flex', flexDirection: 'row' } }>
+            <FilterColumns />
+            <FilterSortColumns />
+          </div>
           <DisplayFilters />
           <Table />
         </>

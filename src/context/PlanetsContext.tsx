@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { FiltersType, PlanetType } from '../utils/type';
+import { FiltersType, PlanetType, SortType } from '../utils/type';
 
 type PlanetsContextType = {
   planets: PlanetType[],
@@ -7,9 +7,11 @@ type PlanetsContextType = {
   search: string,
   filters: FiltersType[],
   allowedColumns: string[],
+  order: SortType,
   addFilter: (filter: FiltersType) => void,
   removeFilter: (filterName: string) => void,
   removeAllFilters: () => void,
+  addOrder: (newOrder: SortType) => void,
   searchPlanet: (searchInfo: string) => void,
   getPlanetsByName: () => PlanetType[],
 };
