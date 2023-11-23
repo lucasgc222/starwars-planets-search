@@ -46,6 +46,7 @@ function PlanetsProvider({ children }: UserProviderProps) {
     setFilters([]);
     setAllowedColumns(COLUMNS);
     setOrder(INITIAL_ORDER);
+    setSearch('');
   };
 
   const addOrder = (newOrder: SortType) => {
