@@ -23,7 +23,6 @@ function Table() {
     const resultData = getPlanetsByName();
     const filteredData = resultData.filter((planet:PlanetType) => (
       filters.every(({ column, comparison, valueFilter }: FiltersType) => {
-        // if (planet[column] === 'unknown') return false;
         switch (comparison) {
           case 'maior que':
             return parseInt(planet[column], 10) > parseInt(valueFilter, 10);

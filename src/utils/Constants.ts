@@ -1,5 +1,7 @@
 import { FiltersType, SortType } from './type';
 
+export const URL = 'https://swapi.dev/api/planets';
+
 export const COLUMNS = [
   'population',
   'orbital_period',
@@ -49,3 +51,8 @@ export const TEST_ID_BTN_FILTER = 'button-filter';
 export const TEST_ID_BTN_REMOVE_FILTERS = 'button-remove-filters';
 export const TEST_ID_COLUMN_FILTER = 'column-filter';
 export const TEST_ID_COMPARISON_FILTER = 'comparison-filter';
+export const TEST_ID_FILTER = 'filter';
+export const TEST_ID_COLUMN_SORT = 'column-sort';
+export const TEST_ID_SORT_DESC = 'column-sort-input-desc';
+export const TEST_ID_SORT_ASC = 'column-sort-input-asc';
+export const TEST_ID_BTN_SORT = 'column-sort-button';
