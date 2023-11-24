@@ -42,9 +42,17 @@ function FilterColumns() {
             id="column"
             onChange={ handleChange }
             data-testid="column-filter"
+            value={ formFilters.column }
           >
             {allowedColumns.map((column, index) => (
-              <option key={ index } value={ column }>{column}</option>
+              <option
+                key={ index }
+                value={ column }
+                selected={ index === 0 }
+              >
+                {column}
+
+              </option>
             ))}
           </select>
         </label>
@@ -56,6 +64,7 @@ function FilterColumns() {
             id="comparison"
             onChange={ handleChange }
             data-testid="comparison-filter"
+            value={ formFilters.comparison }
           >
             {COMPARISON.map((comparison, index) => (
               <option key={ index } value={ comparison }>{comparison}</option>
