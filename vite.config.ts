@@ -22,4 +22,9 @@ export default defineConfig({
       provider: 'c8'
     }
   },
+  server: {
+    host: 'localhost',
+    port: 3000,
+    open: true,
+  }
 })
